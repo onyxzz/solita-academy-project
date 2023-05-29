@@ -18,7 +18,41 @@ const CreateStation = () => {
 
   const [loading, setLoading] = useState(false)
 
-  const handleSubmit = () => {}
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+
+    if (
+      form.stationID &&
+      form.name &&
+      form.address &&
+      form.city &&
+      form.operator &&
+      form.capacity &&
+      form.xCordinate &&
+      form.yCordinate
+    ) {
+      setLoading(true)
+
+      try {
+        const response = await fetch("http://localhost:8080/api/v1/stations/", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(form),
+        })
+
+        await response.json()
+        navigate("/")
+      } catch (err) {
+        alert(err)
+      } finally {
+        setLoading(false)
+      }
+    } else {
+      alert("Please fill out all the fields!")
+    }
+  }
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value })
