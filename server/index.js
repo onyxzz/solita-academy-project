@@ -3,12 +3,15 @@ import * as dotenv from "dotenv"
 import cors from "cors"
 
 import connectDB from "./mongodb/connect.js"
+import stationRoutes from "./routes/stationRoutes.js"
 
 dotenv.config()
 
 const app = express()
 app.use(cors())
 app.use(express.json())
+
+app.use("/api/v1/stations/", stationRoutes)
 
 app.get("/", async (req, res) => {
   res.send("Hello World!")
