@@ -17,6 +17,35 @@ const Home = () => {
 
   const [searchText, setSearchText] = useState("")
 
+  useEffect(() => {
+    const fetchStations = async () => {
+      setLoading(true)
+
+      try {
+        const response = await fetch(`http://localhost:8080/api/v1/stations`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+
+        if (response.ok) {
+          const result = await response.json()
+
+          setAllStations(result.data.reverse())
+
+          setLoading(false)
+        }
+      } catch (error) {
+        alert(error)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchStations()
+  }, [])
+
   return (
     <section className="max-w-7xl mx-auto">
       <div>
@@ -49,7 +78,7 @@ const Home = () => {
               {searchText ? (
                 <RenderCards data={[]} title="No search results found" />
               ) : (
-                <RenderCards data={[]} title="No stations found" />
+                <RenderCards data={allStations} title="No stations found" />
               )}
             </div>
           </>
