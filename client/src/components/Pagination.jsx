@@ -92,7 +92,6 @@ const Pagination = ({ page, pages, changePage }) => {
     pages > 1 && (
       <div className="mt-16 w-1/2 flex justify-around">
         <button
-          className="rounded-xl p-3 bg-red p-2 disabled:bg-gray "
           onClick={() => changePage((prevPage) => prevPage - 1)}
           disabled={page === 1}
         >
@@ -100,7 +99,6 @@ const Pagination = ({ page, pages, changePage }) => {
         </button>
         {middlePagination}
         <button
-          className="rounded-xl p-3 bg-red p-2 "
           onClick={() => changePage((nextPage) => nextPage + 1)}
           disabled={page === pages}
         >
