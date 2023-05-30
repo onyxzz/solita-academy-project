@@ -23,8 +23,11 @@ const App = () => {
           <Route path="/page/:pageNumber" element={<Home />} />
           <Route path="/" element={<Home />} />
           <Route path="/create-station" element={<CreateStation />} />
-          <Route path="/station" element={<Station />} />
-          <Route path="/create-trip" element={<CreateTrip />} />
+          <Route path="/stations" element={<Station />} />
+          <Route
+            path="/stations/:stationName/create-trip"
+            element={<CreateTrip />}
+          />
           <Route path="/stations/:stationName" element={<Station />} />
         </Routes>
       </main>

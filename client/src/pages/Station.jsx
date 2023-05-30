@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 
 const StationPage = () => {
   const { stationName } = useParams()
@@ -32,9 +32,18 @@ const StationPage = () => {
 
   return (
     <section className="max-w-7xl mx-auto">
-      <h1 className="font-extrabold text-[#222328] text-[32px]">
-        {stationData.name}
-      </h1>
+      <div className="flex justify-between">
+        <h1 className="font-extrabold text-[#222328] text-[32px]">
+          {stationData.name}
+        </h1>
+        <Link
+          to={`/stations/${stationName}/create-trip`}
+          className="font-inter font-medium bg-[#6469ff] text-white px-4 py-2 rounded-md flex justify-center items-center"
+        >
+          Create Trip
+        </Link>
+      </div>
+
       <div className="mt-8 flex justify-between w-full">
         <p className="mt-2 text-[#666e75] text-[16px] max-2-[500px]">
           Station ID: {stationData.stationID}
