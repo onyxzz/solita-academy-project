@@ -54,6 +54,7 @@ The application should fulfill the following functional requirements:
 
 ### Station View
 
+- Create a new station.
 - Provide a list of all the stations by pages.
 - Search stations by name.
 

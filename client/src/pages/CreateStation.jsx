@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { useNavigate } from "react-router-dom"
 
-import { StationFormField, Loader } from "../components"
+import { StationFormField } from "../components"
 
 const CreateStation = () => {
   const navigate = useNavigate()
