@@ -11,7 +11,7 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
-app.use("/api/v1/stations/", stationRoutes)
+app.use("/api/v1/stations", stationRoutes)
 
 app.get("/", async (req, res) => {
   res.send("Hello World!")
