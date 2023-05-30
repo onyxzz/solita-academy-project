@@ -31,13 +31,27 @@ const StationPage = () => {
   }
 
   return (
-    <section>
-      <h1>{stationData.name}</h1>
-      <p>Station ID: {stationData.stationID}</p>
-      <p>Address: {stationData.address}</p>
-      <p>City: {stationData.city}</p>
-      <p>Operator: {stationData.operator}</p>
-      <p>Capacity: {stationData.capacity}</p>
+    <section className="max-w-7xl mx-auto">
+      <h1 className="font-extrabold text-[#222328] text-[32px]">
+        {stationData.name}
+      </h1>
+      <div className="mt-8 flex justify-between w-full">
+        <p className="mt-2 text-[#666e75] text-[16px] max-2-[500px]">
+          Station ID: {stationData.stationID}
+        </p>
+        <p className="mt-2 text-[#666e75] text-[16px] max-2-[500px]">
+          City: {stationData.city}
+        </p>
+        <p className="mt-2 text-[#666e75] text-[16px] max-2-[500px]">
+          Capacity: {stationData.capacity}
+        </p>
+        <p className="mt-2 text-[#666e75] text-[16px] max-2-[500px]">
+          Address: {stationData.address}
+        </p>
+        <p className="mt-2 text-[#666e75] text-[16px] max-2-[500px]">
+          Operator: {stationData.operator}
+        </p>
+      </div>
     </section>
   )
 }
