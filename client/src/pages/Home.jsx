@@ -122,7 +122,7 @@ const Home = () => {
                 <RenderCards data={allStations} title="No stations found" />
               )}
             </div>
-            {!searchText && ( // Add this condition to render Pagination only when searchText is empty
+            {!searchText && (
               <div className="flex justify-around">
                 <Pagination
                   page={parseInt(page)}
