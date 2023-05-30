@@ -57,10 +57,12 @@ The application should fulfill the following functional requirements:
 - Create a new station.
 - Provide a list of all the stations by pages.
 - Search stations by name.
+- Show detailed information about a single station.
 
 ### Journey View
 
-- Show detailed information about a single station.
+- Create a new journey
+- Provide a list of all the journeys by pages.
 
 ## Tech Stack
 
