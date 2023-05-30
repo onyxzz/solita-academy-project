@@ -8,6 +8,9 @@ import {
   Pagination,
 } from "../components"
 
+const DEVELOPMENT_URL = "http://localhost:8080"
+const DEPLOYMENT_URL = "https://solita-academy-project.vercel.app/"
+
 const RenderCards = ({ data, title }) => {
   if (data?.length > 0)
     return data.map((station) => <StationCard key={station._id} {...station} />)
@@ -35,7 +38,7 @@ const Home = () => {
 
       try {
         const response = await fetch(
-          `http://localhost:8080/api/v1/stations?page=${page}`,
+          `${DEPLOYMENT_URL}api/v1/stations?page=${page}`,
           {
             method: "GET",
             headers: {
