@@ -2,10 +2,6 @@
 
 This is a web application developed as part of the Solita Exercise. The application fetches data from a backend service and provides various functionalities to view and analyze the data.
 
-## DEMO
-
-https://solita-academy-project-2023.vercel.app/
-
 ## Table of Contents
 
 - [Installation](#installation)
@@ -15,6 +11,10 @@ https://solita-academy-project-2023.vercel.app/
 - [Tech Stack](#tech-stack)
 - [License](#license)
 - [Authors](#authors)
+
+## DEMO
+
+Live Demo: https://solita-academy-project-2023.vercel.app/
 
 ## Installation
 
