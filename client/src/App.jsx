@@ -11,12 +11,20 @@ const App = () => {
         <Link to="/">
           <img src={logo} alt="logo" className="w-28 object-contain" />
         </Link>
-        <Link
-          to="/create-station"
-          className="font-inter font-medium bg-[#6469ff] text-white px-4 py-2 rounded-md"
-        >
-          Create Station
-        </Link>
+        <div>
+          <Link
+            to="/create-trip"
+            className="font-inter mr-3 font-medium bg-[#6469ff] text-white px-4 py-2 rounded-md"
+          >
+            Create Trip
+          </Link>
+          <Link
+            to="/create-station"
+            className="font-inter font-medium bg-[#6469ff] text-white px-4 py-2 rounded-md"
+          >
+            Create Station
+          </Link>
+        </div>
       </header>
       <main className="sm:p-8 px-4 py-8 w-full bg-[#f9fafe] min-h-[calc(100vh-73px)]">
         <Routes>
@@ -24,10 +32,7 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/create-station" element={<CreateStation />} />
           <Route path="/stations" element={<Station />} />
-          <Route
-            path="/stations/:stationName/create-trip"
-            element={<CreateTrip />}
-          />
+          <Route path="create-trip" element={<CreateTrip />} />
           <Route path="/stations/:stationName" element={<Station />} />
         </Routes>
       </main>
