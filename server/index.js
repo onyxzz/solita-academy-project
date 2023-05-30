@@ -4,6 +4,7 @@ import cors from "cors"
 
 import connectDB from "./mongodb/connect.js"
 import stationRoutes from "./routes/stationRoutes.js"
+import tripRoutes from "./routes/tripRoutes.js"
 
 dotenv.config()
 
@@ -12,6 +13,7 @@ app.use(cors())
 app.use(express.json())
 
 app.use("/api/v1/stations", stationRoutes)
+app.use("/api/v1/trips", tripRoutes)
 
 app.get("/", async (req, res) => {
   res.send("Hello World!")

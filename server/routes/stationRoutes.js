@@ -32,6 +32,17 @@ router.route("/").get(async (req, res) => {
   }
 })
 
+router.route("/:stationName").get(async (req, res) => {
+  try {
+    const stationName = req.params.stationName
+    const singleStation = await Station.findOne({ name: stationName })
+
+    res.status(200).json({ success: true, data: singleStation })
+  } catch (error) {
+    res.status(500).json({ success: false, messege: error })
+  }
+})
+
 router.route("/").post(async (req, res) => {
   try {
     const {

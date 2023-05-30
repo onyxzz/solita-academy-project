@@ -1,24 +1,14 @@
 import React from "react"
-import { useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 
-const StationCard = ({
-  _id,
-  stationID,
-  name,
-  address,
-  city,
-  operator,
-  capacity,
-  xCordinate,
-  yCordinate,
-}) => {
+const StationCard = ({ name }) => {
   return (
-    <button
+    <Link
       className="rounded-xl group relative shadow-card hover:text-white hover:bg-[#6469ff] p-6"
-      onClick={() => {}}
+      to={`/stations/${name}`}
     >
-      <div>{name}</div>
-    </button>
+      {name}
+    </Link>
   )
 }
 

@@ -25,6 +25,7 @@ const App = () => {
           <Route path="/create-station" element={<CreateStation />} />
           <Route path="/station" element={<Station />} />
           <Route path="/create-trip" element={<CreateTrip />} />
+          <Route path="/stations/:stationName" element={<Station />} />
         </Routes>
       </main>
     </BrowserRouter>
