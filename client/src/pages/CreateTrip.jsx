@@ -35,7 +35,7 @@ const CreateStation = () => {
 
       try {
         const response = await fetch(
-          "https://solita-academy-project.vercel.app//api/v1/trips/",
+          "https://solita-academy-project.vercel.app/api/v1/trips/",
           {
             method: "POST",
             headers: {

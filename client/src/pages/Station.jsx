@@ -28,7 +28,7 @@ const StationPage = () => {
     const fetchSingleStation = async () => {
       try {
         const response = await fetch(
-          `https://solita-academy-project.vercel.app//api/v1/stations/${stationName}`
+          `https://solita-academy-project.vercel.app/api/v1/stations/${stationName}`
         )
         const data = await response.json()
 
@@ -49,7 +49,7 @@ const StationPage = () => {
     const fetchTrips = async () => {
       try {
         const response = await fetch(
-          `https://solita-academy-project.vercel.app//api/v1/trips?page=${page}&stationName=${stationName}`,
+          `https://solita-academy-project.vercel.app/api/v1/trips?page=${page}&stationName=${stationName}`,
           {
             method: "GET",
             headers: {
