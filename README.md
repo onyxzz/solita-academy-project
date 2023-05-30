@@ -13,6 +13,7 @@ https://solita-academy-project-2023.vercel.app/
   - [Station View](#station-view)
   - [Journey View](#journey-view)
 - [Tech Stack](#tech-stack)
+- [License](#license)
 - [Authors](#authors)
 
 ## Installation
