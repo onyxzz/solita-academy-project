@@ -9,16 +9,28 @@ const router = express.Router()
 router.route("/").get(async (req, res) => {
   try {
     const page = parseInt(req.query.page) || 1
-    const pageSize = parseInt(req.query.limit) || 28
+    const pageSize = parseInt(req.query.limit) || 21
     const skip = (page - 1) * pageSize
 
-    const query = Trip.find({}).skip(skip).limit(pageSize).exec()
+    const query = Trip.find({ departureStationName: req.query.stationName })
+      .skip(skip)
+      .limit(pageSize)
+      .exec()
 
-    const total = await Trip.countDocuments({})
+    const totalDepart = await Trip.countDocuments({
+      departureStationName: req.query.stationName,
+    })
+
+    const totalReturn = await Trip.countDocuments({
+      returnStationName: req.query.stationName,
+    })
+
+    const total = totalDepart + totalReturn
+
     const pages = Math.ceil(total / pageSize)
 
     if (page > pages) {
-      return query.status(404).json({
+      return res.status(404).json({
         success: false,
         message: "No page found",
       })
@@ -26,7 +38,14 @@ router.route("/").get(async (req, res) => {
 
     const trips = await query
 
-    res.status(200).json({ success: true, data: trips, page, pages })
+    res.status(200).json({
+      success: true,
+      data: trips,
+      page,
+      pages,
+      totalDepart,
+      totalReturn,
+    })
   } catch (error) {
     res.status(500).json({ success: false, message: error.message })
   }
@@ -38,6 +57,7 @@ router.route("/").post(async (req, res) => {
       departureDate,
       returnDate,
       departureStationId,
+      departureStationName,
       returnStationId,
       returnStationName,
       distance,
@@ -48,6 +68,7 @@ router.route("/").post(async (req, res) => {
       departureDate,
       returnDate,
       departureStationId,
+      departureStationName,
       returnStationId,
       returnStationName,
       distance,

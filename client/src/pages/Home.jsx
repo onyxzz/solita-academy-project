@@ -38,7 +38,7 @@ const Home = () => {
 
       try {
         const response = await fetch(
-          `${DEVELOPMENT_URL}api/v1/stations?page=${page}`,
+          `${DEPLOYMENT_URL}api/v1/stations?page=${page}`,
           {
             method: "GET",
             headers: {

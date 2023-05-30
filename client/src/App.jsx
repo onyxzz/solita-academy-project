@@ -34,6 +34,10 @@ const App = () => {
           <Route path="/stations" element={<Station />} />
           <Route path="create-trip" element={<CreateTrip />} />
           <Route path="/stations/:stationName" element={<Station />} />
+          <Route
+            path="/stations/:stationName/:pageNumber"
+            element={<Station />}
+          />
         </Routes>
       </main>
     </BrowserRouter>
