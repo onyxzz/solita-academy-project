@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from "react"
+import { useParams } from "react-router-dom"
 
-import { Loader, StationCard, StationFormField } from "../components"
+import {
+  Loader,
+  StationCard,
+  StationFormField,
+  Pagination,
+} from "../components"
 
 const RenderCards = ({ data, title }) => {
   if (data?.length > 0)
@@ -17,23 +23,32 @@ const Home = () => {
   const [searchedResults, setSearchedResults] = useState(null)
   const [searchTimeout, setSearchTimeout] = useState(null)
 
+  const { pageNumber } = useParams()
+  const currentPage = pageNumber || 1
+
+  const [page, setPage] = useState(currentPage)
+  const [pages, setPages] = useState(1)
+
   useEffect(() => {
     const fetchStations = async () => {
       setLoading(true)
 
       try {
-        const response = await fetch(`http://localhost:8080/api/v1/stations`, {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        })
+        const response = await fetch(
+          `http://localhost:8080/api/v1/stations?page=${page}`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        )
 
         if (response.ok) {
-          const result = await response.json()
+          const { data, pages: totalPages } = await response.json()
 
-          setAllStations(result.data.reverse())
-
+          setPages(totalPages)
+          setAllStations(data)
           setLoading(false)
         }
       } catch (error) {
@@ -44,7 +59,7 @@ const Home = () => {
     }
 
     fetchStations()
-  }, [])
+  }, [page])
 
   const handleSearchChange = (e) => {
     clearTimeout(searchTimeout)
@@ -109,6 +124,10 @@ const Home = () => {
             </div>
           </>
         )}
+      </div>
+
+      <div className="flex justify-around">
+        <Pagination page={parseInt(page)} pages={pages} changePage={setPage} />
       </div>
     </section>
   )
